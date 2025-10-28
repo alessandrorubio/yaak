@@ -5,7 +5,6 @@ members = [
     "yaak-git",
     "yaak-grpc",
     "yaak-http",
-    "yaak-license",
     "yaak-mac-window",
     "yaak-models",
     "yaak-plugins",
@@ -34,7 +33,6 @@ strip = true  # Automatically strip symbols from the binary.
 cargo-clippy = []
 default = []
 updater = []
-license = ["yaak-license"]
 
 [build-dependencies]
 tauri-build = { version = "2.5.0", features = [] }
@@ -81,7 +79,6 @@ yaak-fonts = { workspace = true }
 yaak-git = { path = "yaak-git" }
 yaak-grpc = { path = "yaak-grpc" }
 yaak-http = { workspace = true }
-yaak-license = { path = "yaak-license", optional = true }
 yaak-mac-window = { path = "yaak-mac-window" }
 yaak-models = { workspace = true }
 yaak-plugins = { workspace = true }

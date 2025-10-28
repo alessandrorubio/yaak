@@ -8,7 +8,6 @@ export interface AppInfo {
   appDataDir: string;
   appLogDir: string;
   identifier: string;
-  featureLicense: boolean;
   featureUpdater: boolean;
 }
 

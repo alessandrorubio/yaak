@@ -25,10 +25,6 @@ pub enum Error {
     #[error(transparent)]
     WebsocketError(#[from] yaak_ws::error::Error),
 
-    #[cfg(feature = "license")]
-    #[error(transparent)]
-    LicenseError(#[from] yaak_license::error::Error),
-
     #[error(transparent)]
     PluginError(#[from] yaak_plugins::error::Error),
 

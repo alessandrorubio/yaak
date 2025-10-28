@@ -79,7 +79,6 @@ struct AppMetaData {
     app_data_dir: String,
     app_log_dir: String,
     feature_updater: bool,
-    feature_license: bool,
 }
 
 #[tauri::command]
@@ -92,7 +91,6 @@ async fn cmd_metadata(app_handle: AppHandle) -> YaakResult<AppMetaData> {
         name: app_handle.package_info().name.to_string(),
         app_data_dir: app_data_dir.to_string_lossy().to_string(),
         app_log_dir: app_log_dir.to_string_lossy().to_string(),
-        feature_license: cfg!(feature = "license"),
         feature_updater: cfg!(feature = "updater"),
     })
 }
@@ -1359,11 +1357,6 @@ pub fn run() {
         .plugin(yaak_git::init())
         .plugin(yaak_ws::init())
         .plugin(yaak_sync::init());
-
-    #[cfg(feature = "license")]
-    {
-        builder = builder.plugin(yaak_license::init());
-    }
 
     #[cfg(feature = "updater")]
     {
