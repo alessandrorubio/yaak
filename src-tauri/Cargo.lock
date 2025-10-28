@@ -7851,7 +7851,6 @@ dependencies = [
  "yaak-git",
  "yaak-grpc",
  "yaak-http",
- "yaak-license",
  "yaak-mac-window",
  "yaak-models",
  "yaak-plugins",
@@ -7952,23 +7951,6 @@ dependencies = [
  "rustls",
  "rustls-platform-verifier",
  "urlencoding",
- "yaak-models",
-]
-
-[[package]]
-name = "yaak-license"
-version = "0.1.0"
-dependencies = [
- "chrono",
- "log",
- "reqwest",
- "serde",
- "serde_json",
- "tauri",
- "tauri-plugin",
- "thiserror 2.0.17",
- "ts-rs",
- "yaak-common",
  "yaak-models",
 ]
 

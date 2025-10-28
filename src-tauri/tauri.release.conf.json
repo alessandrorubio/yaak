@@ -1,8 +1,7 @@
 {
   "build": {
     "features": [
-      "updater",
-      "license"
+      "updater"
     ]
   },
   "app": {
@@ -14,9 +13,7 @@
           "windows": [
             "*"
           ],
-          "permissions": [
-            "yaak-license:default"
-          ]
+          "permissions": []
         }
       ]
     }

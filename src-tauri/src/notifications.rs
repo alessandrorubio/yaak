@@ -3,7 +3,7 @@ use std::time::SystemTime;
 use crate::error::Result;
 use crate::history::get_or_upsert_launch_info;
 use chrono::{DateTime, Utc};
-use log::{debug, info};
+use log::debug;
 use reqwest::Method;
 use serde::{Deserialize, Serialize};
 use tauri::{AppHandle, Emitter, Manager, Runtime, WebviewWindow};
@@ -77,25 +77,6 @@ impl YaakNotifier {
 
         self.last_check = SystemTime::now();
 
-        if !app_handle.db().get_settings().check_notifications {
-            info!("Notifications are disabled. Skipping check.");
-            return Ok(());
-        }
-
-        debug!("Checking for notifications");
-
-        #[cfg(feature = "license")]
-        let license_check = {
-            use yaak_license::{check_license, LicenseCheckStatus};
-            match check_license(window).await {
-                Ok(LicenseCheckStatus::PersonalUse { .. }) => "personal".to_string(),
-                Ok(LicenseCheckStatus::CommercialUse) => "commercial".to_string(),
-                Ok(LicenseCheckStatus::InvalidLicense) => "invalid_license".to_string(),
-                Ok(LicenseCheckStatus::Trialing { .. }) => "trialing".to_string(),
-                Err(_) => "unknown".to_string(),
-            }
-        };
-        #[cfg(not(feature = "license"))]
         let license_check = "disabled".to_string();
 
         let launch_info = get_or_upsert_launch_info(app_handle);
